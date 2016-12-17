@@ -1,7 +1,0 @@
-{
-	"dbURL":"mongodb://app:hughdoesnotknowthis@ds047666.mlab.com:47666/hth-crackers",
-	"listen": {
-		"hostname": "localhost",
-		"port": 5050
-	}
-}
