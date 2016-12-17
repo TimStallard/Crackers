@@ -20,7 +20,6 @@
     "express": "^4.14.0",
     "mongoose": "^4.7.3",
     "socket.io": "^1.7.2",
-<<<<<<< HEAD
     "socket.io-client": "^1.7.2",
     "vue-loader": "^10.0.2",
     "vue-router": "^2.1.1"
@@ -37,9 +36,7 @@
     "vue": "^2.1.6",
     "vue-socket.io": "^2.0.1",
     "vue-template-compiler": "^2.1.6",
-    "webpack": "^1.14.0"
-=======
+    "webpack": "^1.14.0",
     "uuid-js": "^0.7.5"
->>>>>>> e378d4370b0add3930ba6baddba112ca6b4b3853
   }
 }
