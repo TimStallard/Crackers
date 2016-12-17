@@ -19544,7 +19544,7 @@
 
 /***/ },
 /* 67 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	//
 	//
@@ -19552,6 +19552,7 @@
 	//
 	//
 
+	var state = __webpack_require__(79);
 	module.exports = {
 	  created: function () {
 	    this.$socket.emit("getcode");
@@ -19564,6 +19565,11 @@
 	  sockets: {
 	    code: function (code) {
 	      this.code = code;
+	    },
+	    start: function (match) {
+	      state.initiator = true;
+	      state.match = match;
+	      this.$router.push("force");
 	    }
 	  }
 	};
@@ -19658,8 +19664,9 @@
 	    }
 	  },
 	  sockets: {
-	    start: function () {
-	      state.test = "test2";
+	    start: function (match) {
+	      state.initiator = true;
+	      state.match = match;
 	      this.$router.push("force");
 	    }
 	  }

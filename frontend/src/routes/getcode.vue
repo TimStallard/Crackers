@@ -4,6 +4,7 @@
   </div>
 </template>
 <script>
+  var state = require("../state.js");
   module.exports = {
     created: function(){
       this.$socket.emit("getcode");
@@ -16,6 +17,11 @@
     sockets: {
       code: function(code){
         this.code = code;
+      },
+      start: function(match){
+        state.initiator = true;
+        state.match = match;
+        this.$router.push("force");
       }
     }
   }

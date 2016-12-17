@@ -22,8 +22,9 @@
       }
     },
     sockets: {
-      start: function(){
-        state.test = "test2";
+      start: function(match){
+        state.initiator = true;
+        state.match = match;
         this.$router.push("force");
       }
     }
