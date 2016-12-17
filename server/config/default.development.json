@@ -1,4 +1,4 @@
 {
 	"dbURL":"mongodb://<username>:<password>@ds047666.mlab.com:47666/hth-crackers",
-	"host":"http://localhost:5050"
+	"host":"localhost:5050"
 }

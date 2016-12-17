@@ -1,0 +1,7 @@
+{
+	"dbURL":"mongodb://terminalvelocity:superdupersecretpassword@ds047666.mlab.com:47666/hth-crackers",
+	"listen": {
+		"hostname": "localhost",
+		"port": 5050
+	}
+}
