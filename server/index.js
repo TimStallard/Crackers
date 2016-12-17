@@ -66,6 +66,37 @@ io.on("connection", function (socket){
             }
         })
     });
+    socket.on("motionComplete",function(data) {
+      mongoose.model('Match').find({
+          code: data.matchId
+      }, function(err,match1) {
+        if(match1.initator.user.socketId==socket.id){
+          //
+          match1.initator.user.score = data.score;
+          match1.save(function(err, match2){
+            if(err) console.log(err);
+            if(match2.initator.user.score&&match2.partner.user.score){
+              socket.emit("start", match);
+              io.to(match.partner.user.socketId).emit("done", match2);
+            }
+          });
+        }else if (match1.partner.user.socketId==data.userId) {
+          //
+          match1.partner.user.score = data.score;
+          match1.save(function(err, match2){
+            if(err) console.log(err);
+            if(match2.initator.user.score&&match2.partner.user.score){
+              socket.emit("start", match);
+              io.to(match.initator.user.socketId).emit("done", match2);
+            }
+          });
+        }else{
+          //This person shouldnt even be here
+        }
+      //  if initiator.user.socketId == socketId then populate initiator score otherwise populate partner score
+      //  then if both complete decide winner
+      }
+    });
 });
 
 app.use("/", express.static("../frontend/build"))
