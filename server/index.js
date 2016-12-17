@@ -14,4 +14,4 @@ io.on("connection", function (socket){
   socket.emit("message", "testing");
 });
 
-app.use("/", express.static("../frontend"))
+app.use("/", express.static("../frontend/build"))

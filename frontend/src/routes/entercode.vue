@@ -1,0 +1,31 @@
+<template>
+  <div>
+    <form v-on:submit.prevent="submit">
+      <input type="text" placeholder="Code" v-model="code"></input>
+      <input type="submit" value="Enter match!"></input>
+    </form>
+  </div>
+</template>
+<script>
+  var state = require("../state.js");
+  module.exports = {
+    data: function(){
+      return {
+        code: "",
+        state: state
+      };
+    },
+    methods: {
+      submit: function(){
+        alert("test");
+        this.$socket.emit("submitcode", this.code);
+      }
+    },
+    sockets: {
+      start: function(){
+        state.test = "test2";
+        this.$router.push("force");
+      }
+    }
+  }
+</script>
