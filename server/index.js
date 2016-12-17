@@ -14,25 +14,52 @@ require('./models');
 var sockets = {};
 
 io.on("connection", function (socket){
-    socket.uuid = UUID.create();
     socket.on("signup", function(data){
         var User = mongoose.model("User");
         var newUser = User({
             name: data.name,
-            UUID: socket.uuid
+            socketId: socket.id
         });
 
-        newUser.save(function(err, user2){
-            socket.emit("id", socket.uuid);
+        newUser.save(function(err, user){
+            socket.emit("id", user._id);
         });
     });
     socket.on("getcode", function(){
         //START MATCH WITH THIS CODE, adding the socket.uuid as host
-        socket.emit("code", Math.floor(Math.random() * 300));
+        var code = Math.floor(Math.random() * 300)
+        mongoose.model('User').findOne({
+            socketId: socket.id
+        }, function(err, user){
+            var Match = mongoose.model("Match");
+            var newMatch = Match({
+                initiator: user._id,
+                code: code
+            });
+            newMatch.save(function(err, match){
+                match.populate("initiator", function(err, match){
+                    socket.emit("code", code);
+                });
+            });
+        });
     });
-    socket.on("submitcode", function(){
+    socket.on("submitcode", function(code){
         //Add the socket.uuid as the opponent in the match, and send a start message to both socket, and sockets[{{HOST UUID}}]
-        socket.emit("start");
+        mongoose.model('Match').find({
+            partner: socket.id
+        }, function(err, match1){
+            if (!(match1 == null)) {
+                mongoose.model('User').findOne({
+                    socketId: socket.id
+                }, function(err, user){
+                    mongoose.model('Match').findOneAndUpdate({"code": code}, {"partner": user._id}).populate("initiator","partner").exec(function(err, match){
+                        socket.emit("start", match);
+                    });
+                });
+            } else {
+                socket.emit("error", "There is already a second person in this cracker match!");
+            }
+        })
     });
 });
 

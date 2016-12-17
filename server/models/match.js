@@ -10,6 +10,10 @@ var matchSchema = mongoose.Schema({
 	partner: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',
+		required: false
+	},
+	code: {
+		type: String,
 		required: true
 	},
     winner: {
