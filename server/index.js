@@ -46,14 +46,20 @@ io.on("connection", function (socket){
     socket.on("submitcode", function(code){
         //Add the socket.uuid as the opponent in the match, and send a start message to both socket, and sockets[{{HOST UUID}}]
         mongoose.model('Match').find({
-            partner: socket.id
+            code: code
         }, function(err, match1){
-            if (!(match1 == null)) {
+            if (!match1.partner){
                 mongoose.model('User').findOne({
                     socketId: socket.id
                 }, function(err, user){
-                    mongoose.model('Match').findOneAndUpdate({"code": code}, {"partner": user._id}).populate("initiator","partner").exec(function(err, match){
-                        socket.emit("start", match);
+                    mongoose.model('Match').findOne({"code": code}, function(err, match){
+                      match.partner = user._id;
+                      match.save(function(err, match){
+                        match.populate("partner").populate("initiator", function(err, match){
+                          console.log(match);
+                          socket.emit("start", match);
+                        });
+                      });
                     });
                 });
             } else {
