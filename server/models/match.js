@@ -3,14 +3,26 @@ var mongoose = require('mongoose')
 
 var matchSchema = mongoose.Schema({
 	initiator: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User',
-		requried: true
+		acceleration: {
+			type: Number,
+			required: false
+		},
+		user: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'User',
+			required: false
+		}
 	},
 	partner: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User',
-		required: false
+		acceleration: {
+			type: Number,
+			required: false
+		},
+		user: {
+			type: mongoose.Schema.Types.ObjectId,
+			ref: 'User',
+			required: false
+		}
 	},
 	code: {
 		type: String,
