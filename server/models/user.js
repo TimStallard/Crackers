@@ -6,16 +6,14 @@ var userSchema = mongoose.Schema({
 		type: String,
         required: true
 	},
-	UUID: {
-		type: String,
-        required: true,
-        unique: true,
-        dropDups: true
-	},
     created: {
         type: Date,
         default: Date.now
-    }
+    },
+	socketId: {
+		type: String,
+		required: true
+	}
 });
 
 module.exports = mongoose.model('User', userSchema);

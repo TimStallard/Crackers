@@ -1,4 +1,4 @@
-// User model
+// Match model
 var mongoose = require('mongoose')
 
 var matchSchema = mongoose.Schema({
@@ -10,6 +10,10 @@ var matchSchema = mongoose.Schema({
 	partner: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',
+		required: false
+	},
+	code: {
+		type: String,
 		required: true
 	},
     winner: {
