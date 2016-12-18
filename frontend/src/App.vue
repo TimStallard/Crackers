@@ -8,7 +8,6 @@
 </template>
 <script>
 </script>
-<style src="animate.css/animate.css"></style>
 <style>
   body,html{
     background-color: rgb(150, 0, 0);

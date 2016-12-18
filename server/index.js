@@ -5,6 +5,7 @@ var io = require("socket.io")(server);
 var config = require('./config/config.js');
 var mongoose = require('mongoose');
 var UUID = require('uuid-js');
+var fs = require('fs');
 
 server.listen(config.listen.port, config.listen.hostname);
 
@@ -127,6 +128,14 @@ io.on("connection", function (socket){
     }
 
     socket.on("getLeaderboard", getLeaderboard);
+
+    socket.on("getJoke", function(){
+        // var explicitWords = fs.readFileSync('./routes/badWords.txt', 'utf8').trim().split("\n").map((a)=>(a.replace(':1,','')));
+        fs.readFile('jokes.json', 'utf8', function(err, contents) {
+            contents = JSON.parse(contents);
+            socket.emit("joke",contents[Math.floor(Math.random()*contents.length)]);
+        });
+    })
 });
 
 app.get("/leaderboard",function(req,res){
