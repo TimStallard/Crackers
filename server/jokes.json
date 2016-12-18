@@ -1,1 +1,126 @@
-[{"title":"All of the heroes of Overwatch have natural hair colors...","selftext":"Because heroes never dye."},{"title":"The invention of the shovel was groundbreaking,","selftext":"but the invention of the broom swept the nation."},{"title":"America sure is having some bad luck","selftext":"It's almost like it was built on an ancient Indian burial ground."},{"title":"Why did Chewbacca fail his driving test?","selftext":"He made a few Wookiee errors."},{"title":"My friend told me to stop singing Wonderwall","selftext":"I said maybe"},{"title":"I tried eating a clock once","selftext":"It was time consuming."},{"title":"What does Hillary's emails and a racist post have in common?","selftext":"[removed]"},{"title":"My wife told me to take a spider out instead of killing it","selftext":"We went and had drinks. Cool guy, wants to be a web developer"},{"title":"Apparently 1 out of 3 people cheat in a relationship","selftext":"I just don't know whether it's my wife, or girlfriend. "},{"title":"Why was the blind guy always so happy?","selftext":"He couldn't see any reason not to be!"},{"title":"I sleep better naked.","selftext":"Why is this flight attendant unable to understand that?"},{"title":"What do you mean I can't identify as a television?","selftext":"Just watch me!"},{"title":"Where did the memes make their last stand?","selftext":"The Aylmao"},{"title":"What has 4 wheels and flies?","selftext":"A garbage truck!  Ha ha!"},{"title":"So I found out today I have Alzheimer's...","selftext":"So I found out today I have Alzheimer's..."},{"title":"What did the pirate say on his 80th birthday?","selftext":"Aye matey"},{"title":"There's a fine line between the numerator and denominator","selftext":"Only a fraction of people will find this funny"},{"title":"How do you console somebody with bad grammar skills?","selftext":"There, their, they're."},{"title":"Ever since my girlfriend got pregnant, a lot has changed...","selftext":"like my name, phone number, address, etc."},{"title":"What do you call a computer on the bottom of the ocean?","selftext":"A Dell rolling in the deep."},{"title":"I got an iPad from my chinese friend...","selftext":"I love homemade gifts!"},{"title":"What do you call a sick Pokémon?","selftext":"Pikachoo"},{"title":"What do you call an abominable snowman who's always late?","selftext":"A not-yeti."},{"title":"Freddie Mercury, Venus Williams, and Bruno Mars walk into a bar","selftext":"But they didn't planet that way﻿"},{"title":"A skeleton walks into a bar","selftext":"He orders a beer and a mop"},{"title":"What did one wall say to the other wall?","selftext":"Meet you at the corner."},{"title":"How do you get a fat girl into bed?","selftext":"It's a piece of cake"},{"title":"How do you make an Chocolat omelette?","selftext":"With Easter eggs. "},{"title":"What did one eye say to the other?","selftext":"Between you and me there's something that smells."},{"title":"What do you call a dog with no legs?","selftext":"It doesn't matter, it won't come anyways."},{"title":"Why aren't there any B batteries?","selftext":"Because people might think you have a stutter."},{"title":"Why do they call me an oven?","selftext":"Because when I get turned on things get really hot"},{"title":"How does Good King Wenceslas like his pizza?","selftext":"Deep pan, Crisp and Even"},{"title":"How do you find King Arthur in the dark?","selftext":"With a knight light...."},{"title":"Dasher, Dancer, Prancer, and Vixen.","selftext":"The 4 stages of Bruce Jenner."},{"title":"I didn't really want to take my friend's true or false test","selftext":"But he wouldn't take no for an answer "},{"title":"What kind of movie do mathematicians most often watch?","selftext":"π-rated movies"},{"title":"I'm giving up spray deodorants for the new year","selftext":"Roll on 2017"},{"title":"A bad detective will never be able to jump start a car...","selftext":"They can't find any leads!"},{"title":"Knock Knock. Christmas. Who's there?","selftext":"Oops, looks like Christmas came early this year."},{"title":"Why can't Einstein build a wall?","selftext":"He only has ein stein"},{"title":"I like my women like I like my coffee","selftext":"Ground up and in the freezer! "},{"title":"Using Scratch for programming","selftext":"Thats the entire joke, nothing else."},{"title":"What do you call a dog that codes?","selftext":"A git pull Terrier"},{"title":"People using Visual Studio are alchemists.","selftext":"They are always preparing some solutions."},{"title":"What is Richard Stallman's favorite candy?","selftext":"Fruit by the foot"},{"title":"what did the int say to main() ?","selftext":"sorry, you're not my type !"}]
+[
+  {
+    "title": "All of the heroes of Overwatch have natural hair colors...",
+    "selftext": "Because heroes never dye."
+  },
+  {
+    "title": "The invention of the shovel was groundbreaking,",
+    "selftext": "but the invention of the broom swept the nation."
+  },
+  {
+    "title": "Why did Chewbacca fail his driving test?",
+    "selftext": "He made a few Wookiee errors."
+  },
+  {
+    "title": "My friend told me to stop singing Wonderwall",
+    "selftext": "I said maybe"
+  },
+  {
+    "title": "I tried eating a clock once",
+    "selftext": "It was time consuming."
+  },
+  {
+    "title": "My wife told me to take a spider out instead of killing it",
+    "selftext": "We went and had drinks. Cool guy, wants to be a web developer"
+  },
+  {
+    "title": "What has 4 wheels and flies?",
+    "selftext": "A garbage truck!  Ha ha!"
+  },
+  {
+    "title": "What did the pirate say on his 80th birthday?",
+    "selftext": "Aye matey"
+  },
+  {
+    "title": "There's a fine line between the numerator and denominator",
+    "selftext": "Only a fraction of people will find this funny"
+  },
+  {
+    "title": "How do you console somebody with bad grammar skills?",
+    "selftext": "There, their, they're."
+  },
+  {
+    "title": "What do you call a computer on the bottom of the ocean?",
+    "selftext": "A Dell rolling in the deep."
+  },
+  {
+    "title": "What do you call a sick Pokémon?",
+    "selftext": "Pikachoo"
+  },
+  {
+    "title": "What do you call an abominable snowman who's always late?",
+    "selftext": "A not-yeti."
+  },
+  {
+    "title": "Freddie Mercury, Venus Williams, and Bruno Mars walk into a bar",
+    "selftext": "But they didn't planet that way﻿"
+  },
+  {
+    "title": "A skeleton walks into a bar",
+    "selftext": "He orders a beer and a mop"
+  },
+  {
+    "title": "What did one wall say to the other wall?",
+    "selftext": "Meet you at the corner."
+  },
+  {
+    "title": "How do you make an Chocolat omelette?",
+    "selftext": "With Easter eggs. "
+  },
+  {
+    "title": "What did one eye say to the other?",
+    "selftext": "Between you and me there's something that smells."
+  },
+  {
+    "title": "How does Good King Wenceslas like his pizza?",
+    "selftext": "Deep pan, Crisp and Even"
+  },
+  {
+    "title": "How do you find King Arthur in the dark?",
+    "selftext": "With a knight light...."
+  },
+  {
+    "title": "I didn't really want to take my friend's true or false test",
+    "selftext": "But he wouldn't take no for an answer "
+  },
+  {
+    "title": "What kind of movie do mathematicians most often watch?",
+    "selftext": "π-rated movies"
+  },
+  {
+    "title": "I'm giving up spray deodorants for the new year",
+    "selftext": "Roll on 2017"
+  },
+  {
+    "title": "A bad detective will never be able to jump start a car...",
+    "selftext": "They can't find any leads!"
+  },
+  {
+    "title": "Knock Knock. Christmas. Who's there?",
+    "selftext": "Oops, looks like Christmas came early this year."
+  },
+  {
+    "title": "Why can't Einstein build a wall?",
+    "selftext": "He only has ein stein"
+  },
+  {
+    "title": "Using Scratch for programming",
+    "selftext": "Thats the entire joke, nothing else."
+  },
+  {
+    "title": "What do you call a dog that codes?",
+    "selftext": "A git pull Terrier"
+  },
+  {
+    "title": "People using Visual Studio are alchemists.",
+    "selftext": "They are always preparing some solutions."
+  },
+  {
+    "title": "What is Richard Stallman's favorite candy?",
+    "selftext": "Fruit by the foot"
+  },
+  {
+    "title": "what did the int say to main() ?",
+    "selftext": "sorry, you're not my type !"
+  }
+]
