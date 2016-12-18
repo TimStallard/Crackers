@@ -85,10 +85,11 @@ io.on("connection", function (socket){
             else{
               match.winner = match.partner.iser._id;
             }
-            console.log(match.winner);
             match.save(function(err, match){
-              io.to(match.initiator.user.socketId).emit("done", match);
-              io.to(match.partner.user.socketId).emit("done", match);
+              match.populate("initiator.user").populate("partner.user").populate("winner", function(err, match){
+                io.to(match.initiator.user.socketId).emit("done", match);
+                io.to(match.partner.user.socketId).emit("done", match);
+              });
             });
           }
         });
