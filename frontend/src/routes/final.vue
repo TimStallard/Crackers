@@ -21,7 +21,6 @@
 .win{
   font-size: 3em;
 }
-<<<<<<< HEAD
 .button{
   width: 100%;
   font-size: 1.5em;
@@ -39,8 +38,6 @@
   font-style: italic;
 }
 
-=======
->>>>>>> origin/master
 </style>
 <script>
   var state = require("../state.js");
