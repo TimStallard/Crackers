@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-link class="button" to="/" style="margin-top: 10px">Back home</router-link>
     <ol id="leaderboard">
       <li v-for="user in leaderboard">
         {{user.name}} - {{user.wins}}/{{user.games}}

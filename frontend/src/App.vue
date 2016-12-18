@@ -36,4 +36,16 @@
     display: flex;
     flex-direction: column;
   }
+  .button{
+    width: 100%;
+    font-size: 1.5em;
+    display: block;
+    background-color: white;
+    color: rgb(150, 0, 0);
+    padding: 0.5em 0;
+    border-radius: 0.3em;
+    margin-bottom: 0.7em;
+    text-align: center;
+    text-decoration: none;
+  }
 </style>

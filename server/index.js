@@ -25,11 +25,11 @@ io.on("connection", function (socket){
         });
     });
     socket.on("getcode", function(){
-        //START MATCH WITH THIS CODE, adding the socket.uuid as host
         var code = Math.floor(Math.random() * 300)
         mongoose.model('User').findOne({
             socketId: socket.id
         }, function(err, user){
+          if(user){
             var Match = mongoose.model("Match");
             var newMatch = Match({
                 "initiator.user": user._id,
@@ -40,6 +40,7 @@ io.on("connection", function (socket){
                     socket.emit("code", code);
                 });
             });
+          }
         });
     });
     socket.on("submitcode", function(code){
