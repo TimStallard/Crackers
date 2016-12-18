@@ -22,7 +22,6 @@
           clearInterval(intervalId);
           listener = window.addEventListener("devicemotion", that.handleMotion);
         }
-        //alert("test");
       }, 1000);
       this.state = state;
     },
@@ -53,7 +52,9 @@
             this.submitAcceleration()
           }
         }
-      },
+      }
+    },
+    sockets: {
       done: function(match){
         this.status.match = match;
         alert(JSON.stringify(match));
