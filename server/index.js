@@ -97,6 +97,14 @@ io.on("connection", function (socket){
         });
       });
     });
+    socket.on("register", function(id){
+      mongoose.model("User").findById(id, function(err, user){
+        user.socketId = socket.id;
+        user.save(function(){
+          socket.emit("registered", user);
+        });
+      });
+    });
 });
 
 app.use("/", express.static("../frontend/build"))

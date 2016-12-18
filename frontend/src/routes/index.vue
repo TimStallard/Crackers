@@ -8,9 +8,10 @@
 </template>
 <script>
   module.exports = {
-    sockets: {
-      connect: function(){
-        
+    created: function(){
+      if(localStorage.UserId){
+        this.$socket.emit("register", localStorage.UserId);
+        this.$router.push("main");
       }
     },
     methods: {
@@ -20,6 +21,11 @@
         });
         this.$router.push("/main")
       }
+    },
+    data: function(){
+      return {
+        name: ""
+      };
     }
   }
 </script>
