@@ -105,6 +105,56 @@ io.on("connection", function (socket){
         });
       });
     });
+    socket.on("getLeaderboard", function(id){
+      mongoose.model("User").find({}, function(err, users){
+        mongoose.model("Match").find({}, function(err, matches){
+          matches = matches.filter((match)=>(match.partner)).filter((match)=>(match.winner));
+          //var arrUserData = {};
+          for(var x in users){
+            //arrUserData[]
+            users[x].games = 0
+            users[x].wins  = 0
+            for(var y in matches){
+              if(matches[y].initiator.user._id==users[x]._id||matches[y].partner.user._id==users[x]._id){
+                users[x].games += 1
+              }else{
+                //No game particpation here.
+              }
+              if(matches[y].winner._id==users[x]._id){
+                users[x].wins += 1;
+              }
+            }
+          }
+          socket.emit("leaderboard",users);
+        });
+      });
+    });
+});
+
+app.get("/leaderboard",function(req,res){
+  mongoose.model("User").find({}, function(err, users){
+    mongoose.model("Match").find({}, function(err, matches){
+      matches = matches.filter((match)=>(match.partner)).filter((match)=>(match.winner));
+      //var arrUserData = {};
+      for(var x in users){
+        //arrUserData[]
+        users[x].games = 0
+        users[x].wins  = 0
+        for(var y in matches){
+          if(matches[y].initiator.user._id==users[x]._id||matches[y].partner.user._id==users[x]._id){
+            users[x].games += 1
+          }else{
+            //No game particpation here.
+          }
+          if(matches[y].winner._id==users[x]._id){
+            users[x].wins += 1;
+          }
+        }
+      }
+      console.log(users);
+      res.send(JSON.stringify(users));
+    });
+  });
 });
 
 app.use("/", express.static("../frontend/build"))

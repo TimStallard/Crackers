@@ -30,6 +30,10 @@ var router = new VueRouter({
     {
       path: "/final",
       component: require("./routes/final.vue")
+    },
+    {
+      path: "/leaderboard",
+      component: require("./routes/leaderboard.vue")
     }
   ]
 });

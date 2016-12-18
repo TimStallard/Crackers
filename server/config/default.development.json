@@ -1,4 +1,8 @@
 {
-	"dbURL":"mongodb://<username>:<password>@ds047666.mlab.com:47666/hth-crackers",
-	"host":"localhost:5050"
+	"dbURL":"mongodb://192.168.3.181/hth-crackers",
+	"host":"localhost:5050",
+	"listen":{
+		"hostname":"localhost",
+		"port": 3000
+	}
 }
