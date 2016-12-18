@@ -1,9 +1,11 @@
 <template>
-  <div>
-    Hello {{user.name}}
-    <router-link to="getcode">Get code</router-link>
-    <router-link to="entercode">Enter code</router-link>
-  </div>
+  <transition name="test">
+    <div>
+      Hello {{user.name}}
+      <router-link to="getcode">Get code</router-link>
+      <router-link to="entercode">Enter code</router-link>
+    </div>
+  </transition>
 </template>
 <script>
   module.exports = {

@@ -36,5 +36,9 @@ var router = new VueRouter({
 
 new Vue({
   el: "#app",
-  router: router
+  router: router,
+  template: "<App />",
+  components: {
+    App: require("./App.vue")
+  }
 });
