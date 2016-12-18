@@ -1,18 +1,32 @@
 <template>
-  <div>
-    <template v-if="state.match">
+  <div id="force">
+    <div id="matchdetails" v-if="state.match">
       You
       vs
       {{opponent.name}}
-    </template>
+    </div>
     <div id="countdown" v-if="countdown > 0">
       {{countdown}}
     </div>
-    <div id="countdown" v-if="countdown == 0">
+    <div id="go" v-if="countdown == 0">
       Go!
     </div>
   </div>
 </template>
+<style scoped>
+  *{
+    text-align: center;
+  }
+  #force{
+    margin: auto;
+  }
+  #matchdetails{
+    font-size: 1.5em;
+  }
+  #countdown, #go{
+    font-size: 4em;
+  }
+</style>
 <script>
   var state = require("../state.js");
 
@@ -21,14 +35,13 @@
 
   module.exports = {
     created: function(){
-      console.log("hello");
       var that = this;
       var intervalId = setInterval(function(){
         that.countdown--;
         if(that.countdown == 0){
           clearInterval(intervalId);
           listener = window.addEventListener("devicemotion", that.handleMotion);
-          //setTimeout(that.generateRandom, 10000); //DEBUG ONLY
+          setTimeout(that.generateRandom, 10000); //DEBUG ONLY
         }
       }, 1000);
       this.state = state;

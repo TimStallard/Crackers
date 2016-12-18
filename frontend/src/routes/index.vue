@@ -2,10 +2,25 @@
   <div>
     <form v-on:submit.prevent="submit">
       <input type="text" placeholder="Name" v-model="name"></input>
+      <br>
       <input type="submit" value="Let's get cracking!"></input>
     </form>
   </div>
 </template>
+<style scoped>
+  form{
+    margin-top: 1em;
+    width: 100%;
+  }
+  form>input{
+    font-size: 1.5em;
+    width: 100%;
+    margin-bottom: 1em;
+    text-align: center;
+    padding: 0.3em 0;
+    border-radius: 0.3em;
+  }
+</style>
 <script>
   module.exports = {
     created: function(){
