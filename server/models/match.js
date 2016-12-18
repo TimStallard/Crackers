@@ -28,10 +28,10 @@ var matchSchema = mongoose.Schema({
 		type: String,
 		required: true
 	},
-    winner: {
-        type: mongoose.Schema.Types.ObjectId,
+  winner: {
+    type: mongoose.Schema.Types.ObjectId,
 		ref: 'User'
-    }
+  }
 });
 
 module.exports = mongoose.model('Match', matchSchema);

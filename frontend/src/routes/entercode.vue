@@ -1,7 +1,7 @@
 <template>
   <div>
     <form v-on:submit.prevent="submit">
-      <input type="text" placeholder="Code" v-model="code"></input>
+      <input type="number" placeholder="Code" v-model="code"></input>
       <input type="submit" value="Enter match!"></input>
     </form>
   </div>

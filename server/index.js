@@ -46,8 +46,8 @@ io.on("connection", function (socket){
         //Add the socket.uuid as the opponent in the match, and send a start message to both socket, and sockets[{{HOST UUID}}]
         mongoose.model('Match').find({
             code: code
-        }, function(err, match1){
-            if (!match1.partner){
+        }, function(err, match){
+            if (!match.partner){
                 mongoose.model('User').findOne({
                     socketId: socket.id
                 }, function(err, user){
@@ -66,36 +66,33 @@ io.on("connection", function (socket){
             }
         })
     });
-    socket.on("motionComplete",function(data) {
-      mongoose.model('Match').find({
-          code: data.matchId
-      }, function(err,match1) {
-        if(match1.initator.user.socketId==socket.id){
-          //
-          match1.initator.user.score = data.score;
-          match1.save(function(err, match2){
-            if(err) console.log(err);
-            if(match2.initator.user.score&&match2.partner.user.score){
-              socket.emit("start", match);
-              io.to(match.partner.user.socketId).emit("done", match2);
-            }
-          });
-        }else if (match1.partner.user.socketId==data.userId) {
-          //
-          match1.partner.user.score = data.score;
-          match1.save(function(err, match2){
-            if(err) console.log(err);
-            if(match2.initator.user.score&&match2.partner.user.score){
-              socket.emit("start", match);
-              io.to(match.initator.user.socketId).emit("done", match2);
-            }
-          });
-        }else{
-          //This person shouldnt even be here
+    socket.on("submitacceleration",function(data) {
+      mongoose.model('Match').findOne({
+          _id: data.matchId
+      }).populate("initiator.user").populate("partner.user").exec(function(err,match){
+        if(match.initiator.user.socketId == socket.id){
+          match.initiator.acceleration = data.acceleration;
         }
-      //  if initiator.user.socketId == socketId then populate initiator score otherwise populate partner score
-      //  then if both complete decide winner
-      }
+        else if (match.partner.user.socketId == socket.id){
+          match.partner.acceleration = data.acceleration;
+        }
+        match.save(function(err, match){
+          console.log(err, match);
+          if(match.initiator.acceleration && match.partner.acceleration){
+            if(match.initiator.acceleration > match.partner.acceleration){
+              match.winner = match.initiator.user._id;
+            }
+            else{
+              match.winner = match.partner.iser._id;
+            }
+            console.log(match.winner);
+            match.save(function(err, match){
+              io.to(match.initiator.user.socketId).emit("done", match);
+              io.to(match.partner.user.socketId).emit("done", match);
+            });
+          }
+        });
+      });
     });
 });
 
