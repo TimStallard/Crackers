@@ -77,7 +77,6 @@ io.on("connection", function (socket){
           match.partner.acceleration = data.acceleration;
         }
         match.save(function(err, match){
-          console.log(match);
           if(match.initiator.acceleration && match.partner.acceleration){
             if(match.initiator.acceleration > match.partner.acceleration){
               match.winner = match.initiator.user._id;
@@ -86,11 +85,10 @@ io.on("connection", function (socket){
               match.winner = match.partner.user._id;
             }
             match.save(function(err, match){
-              console.log(err, match);
               match.populate("initiator.user").populate("partner.user").populate("winner", function(err, match){
-                console.log(err, match);
                 io.to(match.initiator.user.socketId).emit("done", match);
                 io.to(match.partner.user.socketId).emit("done", match);
+                getLeaderboard();
               });
             });
           }
@@ -105,30 +103,30 @@ io.on("connection", function (socket){
         });
       });
     });
-    socket.on("getLeaderboard", function(id){
-      mongoose.model("User").find({}, function(err, users){
-        mongoose.model("Match").find({}, function(err, matches){
+
+    function getLeaderboard(){
+      mongoose.model("User").find({}).lean().exec(function(err, users){
+        mongoose.model("Match").find({}).populate("initiator.user").populate("partner.user").populate("winner").lean().exec(function(err, matches){
           matches = matches.filter((match)=>(match.partner)).filter((match)=>(match.winner));
-          //var arrUserData = {};
-          for(var x in users){
-            //arrUserData[]
-            users[x].games = 0
-            users[x].wins  = 0
-            for(var y in matches){
-              if(matches[y].initiator.user._id==users[x]._id||matches[y].partner.user._id==users[x]._id){
-                users[x].games += 1
-              }else{
-                //No game particpation here.
+          for(var user of users){
+            user.games = 0
+            user.wins  = 0
+            for(var match of matches){
+              if(match.initiator.user._id.toString()==user._id.toString()||match.partner.user._id.toString()==user._id.toString()){
+                user.games += 1
               }
-              if(matches[y].winner._id==users[x]._id){
-                users[x].wins += 1;
+              if(match.winner._id.toString()==user._id.toString()){
+                user.wins += 1;
               }
             }
           }
-          socket.emit("leaderboard",users);
+          users.sort((a, b)=>(b.wins - a.wins));
+          io.emit("leaderboard",users);
         });
       });
-    });
+    }
+
+    socket.on("getLeaderboard", getLeaderboard);
 });
 
 app.get("/leaderboard",function(req,res){
@@ -138,16 +136,16 @@ app.get("/leaderboard",function(req,res){
       //var arrUserData = {};
       for(var x in users){
         //arrUserData[]
-        users[x].games = 0
-        users[x].wins  = 0
+        user.games = 0
+        user.wins  = 0
         for(var y in matches){
-          if(matches[y].initiator.user._id==users[x]._id||matches[y].partner.user._id==users[x]._id){
-            users[x].games += 1
+          if(match.initiator.user._id==user._id||match.partner.user._id==user._id){
+            user.games += 1
           }else{
             //No game particpation here.
           }
-          if(matches[y].winner._id==users[x]._id){
-            users[x].wins += 1;
+          if(match.winner._id==user._id){
+            user.wins += 1;
           }
         }
       }

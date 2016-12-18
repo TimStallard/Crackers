@@ -6,7 +6,7 @@
     </template>
     {{player1}} beat {{player2}} by {{scalefactor}}x
     <p>
-    <router-link class="button" to="index">Again!</router-link>
+    <router-link class="button" to="/">Again!</router-link>
   </div>
 </template>
 <style scoped>
