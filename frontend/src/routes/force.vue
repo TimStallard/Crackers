@@ -1,13 +1,16 @@
 <template>
   <div>
-    Test
-    {{countdown}}
-    {{acceleration}}
-    {{state}}
-
-    <template v-if="state.match.winner">
-      <div class="win" v-if="state.match.winner.socketId == $socket.id">You win!</div>
+    <template v-if="state.match">
+      You
+      vs
+      {{opponent.name}}
     </template>
+    <div id="countdown" v-if="countdown > 0">
+      {{countdown}}
+    </div>
+    <div id="countdown" v-if="countdown == 0">
+      Go!
+    </div>
   </div>
 </template>
 <script>
@@ -67,6 +70,16 @@
       done: function(match){
         this.state.match = match;
         this.$router.push("final");
+      }
+    },
+    computed: {
+      opponent: function(){
+        if(this.state.match.initiator.user.socketId == this.$socket.id){
+          return this.state.match.partner.user;
+        }
+        else{
+          return this.state.match.initiator.user;
+        }
       }
     }
   }
