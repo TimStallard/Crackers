@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <div id="titlebar"><h1>Crackers</h1></div>
+    <div id="titlebar"><h1>eCracker</h1></div>
     <div id="page">
       <router-view></router-view>
     </div>
