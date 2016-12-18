@@ -4,6 +4,10 @@
     {{countdown}}
     {{acceleration}}
     {{state}}
+
+    <template v-if="state.match.winner">
+      <div class="win" v-if="state.match.winner.socketId == $socket.id">You win!</div>
+    </template>
   </div>
 </template>
 <script>
@@ -21,6 +25,7 @@
         if(that.countdown == 0){
           clearInterval(intervalId);
           listener = window.addEventListener("devicemotion", that.handleMotion);
+          //setTimeout(that.generateRandom, 10000); //DEBUG ONLY
         }
       }, 1000);
       this.state = state;
@@ -46,18 +51,22 @@
         }
         else{
           if(this.acceleration){
-            console.log(listener);
             window.removeEventListener("devicemotion", this.handleMotion);
-            console.log(this.acceleration);
             this.submitAcceleration()
           }
+        }
+      },
+      generateRandom: function(){
+        if(this.acceleration == 0){
+          this.acceleration = (Math.random() * 80);
+          this.submitAcceleration();
         }
       }
     },
     sockets: {
       done: function(match){
-        this.status.match = match;
-        alert(JSON.stringify(match));
+        this.state.match = match;
+        this.$router.push("final");
       }
     }
   }

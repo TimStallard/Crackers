@@ -77,16 +77,18 @@ io.on("connection", function (socket){
           match.partner.acceleration = data.acceleration;
         }
         match.save(function(err, match){
-          console.log(err, match);
+          console.log(match);
           if(match.initiator.acceleration && match.partner.acceleration){
             if(match.initiator.acceleration > match.partner.acceleration){
               match.winner = match.initiator.user._id;
             }
             else{
-              match.winner = match.partner.iser._id;
+              match.winner = match.partner.user._id;
             }
             match.save(function(err, match){
+              console.log(err, match);
               match.populate("initiator.user").populate("partner.user").populate("winner", function(err, match){
+                console.log(err, match);
                 io.to(match.initiator.user.socketId).emit("done", match);
                 io.to(match.partner.user.socketId).emit("done", match);
               });

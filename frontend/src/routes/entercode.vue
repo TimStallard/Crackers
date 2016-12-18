@@ -17,7 +17,6 @@
     },
     methods: {
       submit: function(){
-        alert("test");
         this.$socket.emit("submitcode", this.code);
       }
     },

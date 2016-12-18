@@ -26,6 +26,10 @@ var router = new VueRouter({
     {
       path: "/force",
       component: require("./routes/force.vue")
+    },
+    {
+      path: "/final",
+      component: require("./routes/final.vue")
     }
   ]
 });
